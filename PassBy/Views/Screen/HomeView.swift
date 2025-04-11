@@ -17,22 +17,13 @@ struct HomeView: View {
             NavigationLink(destination: RunningView()) {
                 ZStack {
                     Map(position: $viewModel.position)
+                        .mapStyle(.standard(elevation: .realistic))
                         .opacity(0.3)
                         .frame(width: 290, height: 290)
                         .clipShape(.circle)
                         .allowsHitTesting(false)
                         .onAppear {
-                            let defaultCoordinate = CLLocationCoordinate2D(latitude: -8.409518, longitude: 115.188919)
-                            let coordinate = viewModel.locationManager.lastLocation?.coordinate ?? defaultCoordinate
-                            print(coordinate)
-                            
-                            let camera = MapCamera(
-                                centerCoordinate: coordinate,
-                                distance: 10000,
-                                heading: 0,
-                                pitch: 0
-                            )
-                            viewModel.position = .camera(camera)
+                            viewModel.updateMapCamera()
                         }
                     
                     Text("Start\nYour\nRun!")
@@ -91,9 +82,6 @@ struct HomeView: View {
         }
         .toolbarBackground(.hidden, for: .navigationBar)
         .padding()
-        .onAppear{
-            CLLocationManager().requestAlwaysAuthorization()
-        }
         .navigationBarBackButtonHidden()
         .navigationDestination(isPresented: $viewModel.navigateToSavedPlaces) {
             SavedPlaceView()

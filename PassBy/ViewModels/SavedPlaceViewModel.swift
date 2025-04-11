@@ -12,15 +12,24 @@ class SavedPlaceViewModel: ObservableObject {
     @Published var isOn = false
     @Published var selectedType: PlaceType? = nil
     @Published var searchTerms = ""
-    @Published var savedPlaces: [Place] = DummyData.places
     
-    var filteredPlaces: [Place] {
-        savedPlaces.filter{ place in
-            let matchFilter = selectedType == nil || place.placeType == selectedType
-            let matchSearch = searchTerms.isEmpty || place.placeName.lowercased().contains(searchTerms.lowercased()) || place.placeAddress.lowercased().contains(searchTerms.lowercased())
-            
-            return matchFilter && matchSearch
+    @Published var allPlaces: [PlacePOI] = [] {
+        didSet {
+            objectWillChange.send()
         }
     }
     
+    var filteredPlaces: [PlacePOI] {
+        allPlaces.filter { place in
+            let isBookmarked = place.isBookmarked
+            let matchFilter = selectedType == nil || place.placeType == selectedType
+            let matchSearch = searchTerms.isEmpty || place.placeName.lowercased().contains(searchTerms.lowercased()) || place.placeAddress.lowercased().contains(searchTerms.lowercased())
+            
+            return isBookmarked && matchFilter && matchSearch
+        }
+    }
+    
+    func initialize(with places: [PlacePOI]) {
+        self.allPlaces = places
+    }
 }

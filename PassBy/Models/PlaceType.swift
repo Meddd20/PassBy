@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-enum PlaceType {
+enum PlaceType: String, Codable {
     case eats, landmarks, scenery, shops
     
     var label: String {

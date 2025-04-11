@@ -9,6 +9,7 @@ import SwiftUI
 
 struct PostRunView: View {
     @StateObject private var viewModel = PostRunViewModel()
+    @Environment(\.modelContext) private var context
     
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
@@ -26,7 +27,7 @@ struct PostRunView: View {
 
                 LazyVStack(spacing: 12) {
                     ForEach(DummyData.places) { place in
-                        PlaceCard(placeName: place.placeName, placeAddress: place.placeAddress, type: place.placeType)
+                        PlaceCard(placeName: place.placeName, placeAddress: place.placeAddress, type: place.placeType, latitude: place.placeLatitude, longitude: place.placeLongitude)
                             .background(Color.clear)
                             .contentShape(Rectangle())
                     }

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 class PostRunViewModel: ObservableObject {
     @Published var navigateToHome = false

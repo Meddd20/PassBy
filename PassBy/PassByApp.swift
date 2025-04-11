@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 @main
 struct PassByApp: App {
@@ -15,5 +16,6 @@ struct PassByApp: App {
                 HomeView()
             }
         }
+        .modelContainer(for: [PlacePOI.self])
     }
 }

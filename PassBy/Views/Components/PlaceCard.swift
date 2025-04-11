@@ -11,8 +11,13 @@ struct PlaceCard: View {
     var placeName: String
     var placeAddress: String
     var type: PlaceType
+    var latitude: Double
+    var longitude: Double
     
     @State private var isBookmarked: Bool = false
+    let repo = PlaceRepository()
+    
+    @Environment(\.modelContext) private var context
     
     var body: some View {
         ZStack (alignment: .topTrailing) {
@@ -30,6 +35,14 @@ struct PlaceCard: View {
                 Spacer()
                 
                 Button (action: {
+                    repo.toggleBookmark(
+                        name: placeName,
+                        address: placeAddress,
+                        latitude: latitude,
+                        longitude: longitude,
+                        type: type,
+                        context: context
+                    )
                     isBookmarked.toggle()
                 }) {
                     Image(systemName: isBookmarked ? "bookmark.fill" : "bookmark")
@@ -56,5 +69,8 @@ struct PlaceCard: View {
                             
         }
         .padding(EdgeInsets(top: 20, leading: 0, bottom: 0, trailing: 0))
+        .onAppear {
+            isBookmarked = repo.isPlaceBookmarked(latitude: latitude, longitude: longitude, context: context)
+        }
     }
 }

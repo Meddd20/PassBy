@@ -30,11 +30,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		801DD4AB2DA4E87000B3596C /* PassBy */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = PassBy;
-			sourceTree = "<group>";
-		};
 		801DD4BC2DA4E87100B3596C /* PassByTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = PassByTests;
@@ -43,6 +38,11 @@
 		801DD4C62DA4E87100B3596C /* PassByUITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = PassByUITests;
+			sourceTree = "<group>";
+		};
+		805A5F132DA7F69B00908EDD /* PassBy */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = PassBy;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -75,7 +75,7 @@
 		801DD4A02DA4E87000B3596C = {
 			isa = PBXGroup;
 			children = (
-				801DD4AB2DA4E87000B3596C /* PassBy */,
+				805A5F132DA7F69B00908EDD /* PassBy */,
 				801DD4BC2DA4E87100B3596C /* PassByTests */,
 				801DD4C62DA4E87100B3596C /* PassByUITests */,
 				801DD4AA2DA4E87000B3596C /* Products */,
@@ -108,7 +108,7 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				801DD4AB2DA4E87000B3596C /* PassBy */,
+				805A5F132DA7F69B00908EDD /* PassBy */,
 			);
 			name = PassBy;
 			packageProductDependencies = (
@@ -398,7 +398,8 @@
 				DEVELOPMENT_ASSET_PATHS = "\"PassBy/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "This allows the app to function properly, even when not in use. Your privacy is always respected.";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "We need access to your location while using the app to show maps and nearby points of interest.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We use your location for navigation and exploration features, even when the app is running in the background.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -427,7 +428,8 @@
 				DEVELOPMENT_ASSET_PATHS = "\"PassBy/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "This allows the app to function properly, even when not in use. Your privacy is always respected.";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "We need access to your location while using the app to show maps and nearby points of interest.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We use your location for navigation and exploration features, even when the app is running in the background.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

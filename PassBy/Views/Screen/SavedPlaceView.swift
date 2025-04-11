@@ -6,9 +6,12 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct SavedPlaceView: View {
     @StateObject private var viewModel = SavedPlaceViewModel()
+    @Environment(\.modelContext) private var context
+    @Query var places: [PlacePOI]
     
     var body: some View {
         NavigationStack {
@@ -55,7 +58,7 @@ struct SavedPlaceView: View {
                 
                 List(viewModel.filteredPlaces) { place in
                     Section {
-                        PlaceCard(placeName: place.placeName, placeAddress: place.placeAddress, type: place.placeType)
+                        PlaceCard(placeName: place.placeName, placeAddress: place.placeAddress, type: place.placeType, latitude: place.placeLatitude, longitude: place.placeLongitude)
                     }
                     .listRowInsets(.init(top: 8, leading: 12, bottom: 8, trailing: 12))
                     .listRowSeparator(.hidden, edges: .all)
@@ -81,6 +84,10 @@ struct SavedPlaceView: View {
             .navigationDestination(isPresented: $viewModel.navigateToHome) {
                 HomeView()
             }
+            .onAppear {
+                viewModel.initialize(with: places)
+            }
+
         }
     }
 }
